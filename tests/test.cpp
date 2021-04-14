@@ -34,22 +34,4 @@ acc.Account::ChangeBalance(50);
 EXPECT_EQ(acc.Account::GetBalance(), 150);
 }
 
-TEST(Account, Lock){
-   NiceMock<MockAccount> acc(0, 100);
-   acc.Account::Lock();
-   EXPECT_THROW(acc.Account::Lock(), std::runtime_error);
-}
 
-TEST(Account, Unlock){
-   NiceMock<MockAccount> acc(0, 100);
-   EXPECT_CALL(acc, Unlock()).Times(1);
-   acc.Unlock();
-}
-
-TEST(Transaction, SaveToDataBase){
-   NiceMock<MockAccount> f_acc(0, 200);
-   NiceMock<MockAccount> t_acc(1, 300);
-   MockTransaction tr;
-   EXPECT_CALL(tr, SaveToDataBase(f_acc, t_acc, 150)).Times(1);
-   tr.SaveToDataBase(f_acc, t_acc, 150);
-}
