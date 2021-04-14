@@ -50,5 +50,5 @@ EXPECT_EQ(acc.Account::GetBalance(), 150);
    NiceMock<MockAccount> t_acc(1, 300);
    MockTransaction tr;
    tr.SaveToDataBase(f_acc, t_acc, 150);
-   EXPECT_THROW(tr.SaveToDataBase(f_acc, t_acc, 150), std::runtime_error);
+   EXPECT_TRUE(tr.SaveToDataBase(f_acc, t_acc, 150));
   }
