@@ -50,6 +50,6 @@ EXPECT_EQ(acc.Account::GetBalance(), 150);
    NiceMock<MockAccount> t_acc(1, 300);
    MockTransaction tr;
    
-   EXPECT_CALL(tr, SaveToDataBase(f_acc, t_acc, 500)).Times(1);
+   EXPECT_THROW(tr, SaveToDataBase(f_acc, t_acc, 150));
    
   }
