@@ -57,8 +57,10 @@ bool Transaction::Debit(Account& accout, int sum) {
   return false;
 }
 
-void Transaction::SaveToDataBase(Account& from, Account& to, int sum) {
-if (true) throw std::runtime_error("0 send to 1 150$ Balance 0 is 50 Balance 1 is 450");
+bool Transaction::SaveToDataBase(Account& from, Account& to, int sum) {
+if (from.id()>sum) {
+return true;
+};
  /* std::cout << from.id() << " send to " << to.id() << " $" << sum << std::endl;
   std::cout << "Balance " << from.id() << " is " << from.GetBalance()
             << std::endl;
