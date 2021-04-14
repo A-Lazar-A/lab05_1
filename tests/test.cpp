@@ -16,10 +16,10 @@ MOCK_METHOD(void, Lock, (), (override));
 MOCK_METHOD(void, Unlock, (), (override));
 };
 
-/*class MockTransaction: public Transaction{
+class MockTransaction: public Transaction{
 public:
 MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
-};*/
+};
 
 TEST(Account, GetBalance){
 NiceMock<MockAccount> acc(1,100);
@@ -45,10 +45,10 @@ EXPECT_EQ(acc.Account::GetBalance(), 150);
    EXPECT_CALL(acc, Unlock()).Times(1);
    acc.Unlock();
   }
-/* TEST(Transaction, SaveToDataBase){
+ TEST(Transaction, SaveToDataBase){
    NiceMock<MockAccount> f_acc(0, 200);
    NiceMock<MockAccount> t_acc(1, 300);
    MockTransaction tr;
-   EXPECT_CALL(tr, SaveToDataBase(f_acc, t_acc, 150));
+   EXPECT_TROW(tr.SaveToDataBase(f_acc, t_acc, 150), std::runtime_error);
    tr.SaveToDataBase(f_acc, t_acc, 150);
-  }*/
+  }
