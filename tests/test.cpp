@@ -49,7 +49,9 @@ EXPECT_EQ(acc.Account::GetBalance(), 150);
    NiceMock<MockAccount> f_acc(0, 200);
    NiceMock<MockAccount> t_acc(1, 300);
    MockTransaction tr;
-   tr.SaveToDataBase(f_acc, t_acc, 150);
+   tr.SaveToDataBase(f_acc, t_acc, 150);Cr
+   EXPECT_CALL(tr, Credit(f_acc, 150)).Times(1);
+   EXPECT_CALL(tr, Debit(f_acc, 150)).Times(1);
    tr.Credit(f_acc, 150);
    tr.Debit(t_acc, 150);
    EXPECT_FALSE(tr.SaveToDataBase(f_acc, t_acc, 150));
