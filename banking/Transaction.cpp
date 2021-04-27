@@ -72,4 +72,4 @@ return true;*/
   std::cout << "Balance " << from.id() << " is " << from.GetBalance()
             << std::endl;
   std::cout << "Balance " << to.id() << " is " << to.GetBalance() << std::endl;*/
-}
+
